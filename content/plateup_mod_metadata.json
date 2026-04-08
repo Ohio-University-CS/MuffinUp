@@ -1,0 +1,9 @@
+{
+  "Name": "MuffinUp!",
+  "Description": "A mod for PlateUp! that adds muffin-related content.",
+  "Author": "Your Name",
+  "Version": "0.1.0",
+  "Dependencies": [
+    "KitchenLib"
+  ]
+}
