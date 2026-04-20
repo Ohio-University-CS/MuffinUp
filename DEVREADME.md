@@ -58,4 +58,6 @@ Before downloading .NET 10.0, you will need the accompanying extensions to go wi
 
 In order to compile in the first place, you must download .NET 10.0 from the official Microsoft website (https://dotnet.microsoft.com/en-us/download/dotnet/10.0). Once downloaded, it should stop showing errors when opening the files for the MuffinUp modding folder as it should correctly read the .csproj file and set up the project to be compiled. If the project does not automatically setup, use `dotnet restore` and it will look for the .sln file to setup the project. When finished coding and wanting to test to work in-game, use `dotnet build` in the command line in order to compile. The game will automatically read the compiled .dll file and no more work is needed.
 
-## 
+## Library/Mods/Opening Game
+
+The only mods needed are KitchenLib (https://steamcommunity.com/sharedfiles/filedetails/?id=2898069883) and HarmonyX (https://steamcommunity.com/sharedfiles/filedetails/?id=2898033283). Once installed, the MuffinUp mod will have the required libraries to work and you may open the game. I suggest using the Starting Meal Selector Mod (https://steamcommunity.com/sharedfiles/filedetails/?id=2898176672) so that you can select the muffin meal without needing it to randomly load.
