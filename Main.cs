@@ -45,6 +45,15 @@ namespace KitchenMuffinUp
             {
                 AddGameDataObject<Muffin>();
                 LogInfo("Successfully registered Muffin dish!");
+                
+                AddGameDataObject<MuffinTray>();
+                LogInfo("Successfully registered MuffinTray item!");
+                
+                AddGameDataObject<BlueberryMuffinTrayStack>();
+                LogInfo("Successfully registered BlueberryMuffinTrayStack item group!");
+                
+                AddGameDataObject<MuffinBlueberryDish>();
+                LogInfo("Successfully registered MuffinBlueberry dish!");
             }
             catch (System.Exception ex)
             {
