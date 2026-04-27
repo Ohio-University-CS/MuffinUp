@@ -11,20 +11,6 @@ namespace KitchenMuffinUp
     {
         public override string UniqueNameID => "BlueberryMuffinTrayStack";
 
-        public override List<Item> Items => new List<Item>
-        {
-            (Item)GDOUtils.GetExistingGDO(ItemReferences.Blueberries),
-            GetMuffinTray()
-        };
-
-        public override Item Result => GetMuffinTray();
-
-        public override int MaxStackSize => 1;
-
-        public override bool PreventNormalGroups => false;
-
-        public override bool CanContainNullItems => false;
-
         public override GameObject Prefab => GetPrefab();
 
         private Item GetMuffinTray()

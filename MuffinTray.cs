@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using KitchenData;
 using KitchenLib.Customs;
 using KitchenLib.References;
@@ -18,9 +19,9 @@ namespace KitchenMuffinUp
 
         public override Item DisposesTo => (Item)GDOUtils.GetExistingGDO(ItemReferences.Plate);
 
-        public override Item DuplicateItem => null;
+        public override Item DuplicateItem { get; set; }
 
-        public override int DuplicateCount => 0;
+        public override int DuplicateCount { get; set; }
 
         public override bool IsIndisposable => false;
 
