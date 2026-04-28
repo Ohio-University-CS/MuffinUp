@@ -1,16 +1,35 @@
-using KitchenData;
-using KitchenLib.Customs;
-using KitchenLib.Utils;
-using KitchenMuffinUp.Customs.Appliances;
-using UnityEngine;
+// using KitchenData;
+// using KitchenLib.References;
+// using KitchenLib.Utils;
+// using UnityEngine;
 
-namespace KitchenMuffinUp.Customs.Items;
+// namespace KitchenMuffinUp.Customs.Items;
 
-public class BlueBerries : CustomItem
-{
-    public override string UniqueNameID => "BlueBerries";
+// public class BlueBerries : CustomItem
+// {
+//     public override string UniqueNameID => "BlueBerries";
 
-    public override GameObject Prefab => MaterialUtils.AssignMaterialsByNames(Main.Bundle.LoadAsset<GameObject>("Blue Berries"));
+//     public override GameObject Prefab
+//     {
+//         get
+//         {
+//             try
+//             {
+//                 // Use existing Blueberries item from game
+//                 Item blueberriesItem = (Item)GDOUtils.GetExistingGDO(ItemReferences.Blueberries);
+//                 if (blueberriesItem != null && blueberriesItem.Prefab != null)
+//                 {
+//                     return blueberriesItem.Prefab;
+//                 }
+//             }
+//             catch
+//             {
+//                 Main.LogWarning("Failed to load Blueberries prefab from game");
+//             }
 
-    public override Appliance DedicatedProvider => (Appliance)GDOUtils.GetCustomGameDataObject<BlueBerriesProvider>().GameDataObject;
-}
+//             return null;
+//         }
+//     }
+
+//     public override Appliance DedicatedProvider => null;  // Use existing blueberries provider from game
+// }

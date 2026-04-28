@@ -1,36 +1,63 @@
-using System.Collections.Generic;
-using KitchenData;
-using KitchenLib.Customs;
-using KitchenLib.Utils;
-using KitchenMuffinUp.Customs.Items;
-using UnityEngine;
+// using System.Collections.Generic;
+// using KitchenData;
+// using KitchenLib.Customs;
+// using KitchenLib.References;
+// using KitchenLib.Utils;
+// using KitchenMuffinUp.Customs.Items;
+// using UnityEngine;
 
-namespace KitchenMuffinUp.Customs.Appliances;
+// namespace KitchenMuffinUp.Customs.Appliances;
 
-public class BlueBerriesProvider : CustomAppliance
-{
-    public override string UniqueNameID => "BlueBerriesProvider";
+// public class BlueBerriesProvider : CustomAppliance
+// {
+//     public override string UniqueNameID => "BlueBerriesProvider";
 
-    public override GameObject Prefab => MaterialUtils.AssignMaterialsByNames(Main.Bundle.LoadAsset<GameObject>("Blue Berries Provider"));
+//     public override GameObject Prefab
+//     {
+//         get
+//         {
+//             try
+//             {
+//                 // Use existing Blueberries provider/appliance from game
+//                 Appliance blueberriesAppliance = (Appliance)GDOUtils.GetExistingGDO(ApplianceReferences.BlueberriesBush);
+//                 if (blueberriesAppliance != null && blueberriesAppliance.Prefab != null)
+//                 {
+//                     return blueberriesAppliance.Prefab;
+//                 }
+//             }
+//             catch
+//             {
+//                 Main.LogWarning("Failed to load Blueberries provider prefab from game");
+//             }
 
-    public override List<IApplianceProperty> Properties => new List<IApplianceProperty> { (IApplianceProperty)(object)KitchenPropertiesUtils.GetUnlimitedCItemProvider(GDOUtils.GetCustomGameDataObject<BlueBerries>().ID) };
+//             return null;
+//         }
+//     }
 
-    public override PriceTier PriceTier => (PriceTier)3;
+//     public override List<IApplianceProperty> Properties => new List<IApplianceProperty> 
+//     { 
+//         (IApplianceProperty)(object)KitchenPropertiesUtils.GetUnlimitedCItemProvider(GDOUtils.GetExistingGDO(ItemReferences.Blueberries).ID) 
+//     };
 
-    public override RarityTier RarityTier => (RarityTier)1;
+//     public override PriceTier PriceTier => (PriceTier)3;
 
-    public override bool IsPurchasable => true;
+//     public override RarityTier RarityTier => (RarityTier)1;
 
-    public override bool SellOnlyAsDuplicate => true;
+//     public override bool IsPurchasable => true;
 
-    public override List<(Locale, ApplianceInfo)> InfoList => new List<(Locale, ApplianceInfo)> { ((Locale)1, new ApplianceInfo
-    {
-        Name = "Blue Berries",
-        Description = "Provides Blue Berries"
-    }) };
+//     public override bool SellOnlyAsDuplicate => true;
 
-    public override void OnRegister(Appliance gameDataObject)
-    {
-        ((CustomGameDataObject<Appliance>)this).OnRegister(gameDataObject);
-    }
-}
+//     public override List<(Locale, ApplianceInfo)> InfoList => new List<(Locale, ApplianceInfo)> 
+//     { 
+//         ((Locale)1, new ApplianceInfo
+//         {
+//             Name = "Blue Berries",
+//             Description = "Provides Blue Berries"
+//         }) 
+//     };
+
+//     public override void OnRegister(Appliance gameDataObject)
+//     {
+//         ((CustomGameDataObject<Appliance>)this).OnRegister(gameDataObject);
+//     }
+// }

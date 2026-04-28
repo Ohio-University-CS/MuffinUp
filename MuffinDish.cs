@@ -1,10 +1,11 @@
 using System.Collections.Generic;
-using System.Web.UI.WebControls;
+using Kitchen;
 using KitchenData;
 using KitchenLib;
 using KitchenLib.Customs;
 using KitchenLib.References;
 using KitchenLib.Utils;
+using KitchenMuffinUp.Customs.Items;
 using UnityEngine;
 
 namespace KitchenMuffinUp.Customs.Dishes;
@@ -59,6 +60,18 @@ public class MuffinDish : CustomDish
 
     public override bool IsAvailableAsLobbyOption => true;
 
+    public override List<Dish.MenuItem> ResultingMenuItems => new List<Dish.MenuItem>
+    {
+        new Dish.MenuItem
+        {
+            Item = (Item)GDOUtils.GetCustomGameDataObject<Muffin>().GameDataObject,
+            Phase = (MenuPhase)1,
+            Weight = 1f,
+            DynamicMenuType = (DynamicMenuType)0,
+            DynamicMenuIngredient = null
+        }
+    };
+
     public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string>
     {
         {
@@ -84,14 +97,16 @@ public class MuffinDish : CustomDish
     {
         try
         {
-            if (Main.Bundle != null)
+            // Use CupcakeTray prefab for display
+            Item trayItem = (Item)GDOUtils.GetExistingGDO(ItemReferences.CupcakeTray);
+            if (trayItem != null && trayItem.Prefab != null)
             {
-                return Main.Bundle.LoadAsset<GameObject>("");
+                return trayItem.Prefab;
             }
         }
         catch
         {
-            Main.LogWarning("Failed to load DisplayPrefab from bundle");
+            Main.LogWarning("Failed to load DisplayPrefab from CupcakeTray item");
         }
 
         return null;
@@ -101,14 +116,16 @@ public class MuffinDish : CustomDish
     {
         try
         {
-            if (Main.Bundle != null)
+            // Use CupcakeTray prefab for icon
+            Item trayItem = (Item)GDOUtils.GetExistingGDO(ItemReferences.CupcakeTray);
+            if (trayItem != null && trayItem.Prefab != null)
             {
-                return MaterialUtils.AssignMaterialsByNames(Main.Bundle.LoadAsset<GameObject>("MU-BaseMuffin"));
+                return trayItem.Prefab;
             }
         }
         catch
         {
-            Main.LogWarning("Failed to load IconPrefab from bundle");
+            Main.LogWarning("Failed to load IconPrefab from CupcakeTray item");
         }
 
         return null;

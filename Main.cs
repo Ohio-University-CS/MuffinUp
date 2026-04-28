@@ -3,6 +3,8 @@ using KitchenLib;
 using KitchenMods;
 using KitchenLib.Utils;
 using KitchenData;
+using KitchenMuffinUp.Customs.Dishes;
+using KitchenMuffinUp.Customs.Items;
 using System.Reflection;
 using UnityEngine;
 
@@ -16,8 +18,6 @@ namespace KitchenMuffinUp
         public const string MOD_AUTHOR = "MuffinUp! Team";
         public const string MOD_GAMEVERSION = ">=1.1.1";
 
-        public static AssetBundle Bundle;
-
         public Main() : base(MOD_GUID, MOD_NAME, MOD_AUTHOR, MOD_VERSION, MOD_GAMEVERSION, Assembly.GetExecutingAssembly())
         {
             LogWarning($"{MOD_GUID} v{MOD_VERSION} in use!");
@@ -27,28 +27,24 @@ namespace KitchenMuffinUp
         {
             LogInfo("Registering MuffinUp content...");
 
-            // Load asset bundle if available
             try
             {
-                if (mod.GetPacks<AssetBundleModPack>().Count > 0)
-                {
-                    Bundle = mod.GetPacks<AssetBundleModPack>()[0].AssetBundles[0];
-                    LogInfo("Asset bundle loaded successfully!");
-                }
+                AddGameDataObject<Muffin>();
+                LogInfo("Successfully registered Muffin item!");
             }
-            catch
+            catch (System.Exception ex)
             {
-                LogWarning("Could not load asset bundle");
+                LogError($"Failed to register Muffin item: {ex.Message}");
             }
 
             try
             {
-                AddGameDataObject<Muffin>();
+                AddGameDataObject<MuffinDish>();
                 LogInfo("Successfully registered Muffin dish!");
             }
             catch (System.Exception ex)
             {
-                LogError($"Failed to register content: {ex.Message}");
+                LogError($"Failed to register Muffin dish: {ex.Message}");
             }
         }
 
@@ -63,4 +59,5 @@ namespace KitchenMuffinUp
         #endregion
     }
 }
+
 
