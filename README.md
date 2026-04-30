@@ -72,17 +72,17 @@ This mod is deployed via GitHub Releases. Follow these steps to install the late
 
 > Screenshots and in-game footage are available in the Demo Video linked above.
 
----
+
 
 ## Known Issues
 
-*(None currently documented)*
+*
 
 ---
 
 ## Future Work
 
-*(Coming soon)*
+*
 
 ---
 
