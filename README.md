@@ -74,15 +74,19 @@ This mod is deployed via GitHub Releases. Follow these steps to install the late
 
 
 
-## Known Issues
+## Known Issues 4/30/26
 
-*
+* Muffins currently cannot be plated due to a game update.
+* Order bubble does not show the correct textures.
 
 ---
 
 ## Future Work
 
-*
+* Add more muffin variants.
+* Add more muffin toppings.
+* Add a bigger muffin tin upgrade.
+* Add mini muffins and jumbo muffins.
 
 ---
 
