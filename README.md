@@ -6,7 +6,7 @@ A mod for the game **PlateUp!** that adds muffins and muffin variants as a fully
 
 ## Demo Video
 
-
+https://youtu.be/Qa00RlfaPkE
 
 ---
 
