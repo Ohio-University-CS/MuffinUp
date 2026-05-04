@@ -26,4 +26,4 @@ jobs:
         run: dotnet restore
 
       - name: Run tests
-        run: dotnet test tests/MuffinUp.Tests.csproj -p:UseTestStubs=true
+        run: dotnet test ./MuffinUp.csproj -p:UseTestStubs=true
