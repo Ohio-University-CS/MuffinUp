@@ -27,9 +27,11 @@ jobs:
           echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
         shell: bash
 
+      - name: Restore root project
+        run: dotnet restore ./MuffinUp.csproj
+
       - name: Verify formatting for root project
-        run: |
-          dotnet format --verify-no-changes --severity info ./MuffinUp.csproj
+        run: dotnet format --verify-no-changes --severity info ./MuffinUp.csproj
         shell: bash
 
       - name: Verify formatting for Unity solution
