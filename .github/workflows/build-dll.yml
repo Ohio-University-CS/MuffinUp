@@ -1,0 +1,40 @@
+name: Build DLL
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      STEAM_INSTALL_DIR: /home/runner/.steam/steam
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 10.0.x
+
+    - name: Restore project
+      run: dotnet restore MuffinUp.csproj
+
+    - name: Build DLL
+      run: |
+        dotnet build MuffinUp.csproj --configuration Release --no-restore \
+          /p:SteamInstallDirectory=${{ env.STEAM_INSTALL_DIR }} \
+          /p:EnableModDeployLocal=false \
+          /p:EnableGameDebugging=false \
+          /p:EnableAutoWorkshopReferences=false \
+          /p:EnableAutoLocalModsReferences=false
+
+    - name: Upload DLL artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: MuffinUp-DLL
+        path: MuffinUp/bin/Release/net472/*.dll

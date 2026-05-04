@@ -22,6 +22,8 @@ jobs:
       run: dotnet restore
 
     - name: Build
-      run: dotnet build --configuration Release
+      env:
+        SteamPath: /home/runner/.steam/steam
+      run: dotnet build --configuration Release /p:SteamPath=/home/runner/.steam/steam
     
   
