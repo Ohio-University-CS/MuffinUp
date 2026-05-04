@@ -21,13 +21,20 @@ jobs:
       with:
         dotnet-version: 10.0.x
 
+    - name: Prepare fake Steam path
+      run: |
+        mkdir -p /tmp/steam/config
+        echo '"path" "/tmp/fake_steam"' > /tmp/steam/config/libraryfolders.vdf
+        mkdir -p /tmp/fake_steam/steamapps/common/PlateUp/PlateUp
+
     - name: Restore project
       run: dotnet restore MuffinUp.csproj
 
     - name: Build DLL
       run: |
         dotnet build MuffinUp.csproj --configuration Release --no-restore \
-          /p:SteamInstallDirectory=${{ env.STEAM_INSTALL_DIR }} \
+          /p:SteamInstallDirectory=/tmp/steam \
+          /p:GamePath=/tmp/fake_steam/steamapps/common/PlateUp/PlateUp \
           /p:EnableModDeployLocal=false \
           /p:EnableGameDebugging=false \
           /p:EnableAutoWorkshopReferences=false \
