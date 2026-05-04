@@ -1,0 +1,40 @@
+name: Verify Formatting
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch: {}
+
+jobs:
+  verify-formatting:
+    name: Verify formatting only
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Install dotnet-format
+        run: |
+          dotnet tool install -g dotnet-format --version 10.0.0
+          echo "::add-path::$HOME/.dotnet/tools"
+        shell: bash
+
+      - name: Verify formatting for root project
+        run: |
+          export PATH="$HOME/.dotnet/tools:$PATH"
+          dotnet format --verify-no-changes --severity info ./MuffinUp.csproj
+        shell: bash
+
+      - name: Verify formatting for Unity solution
+        run: |
+          export PATH="$HOME/.dotnet/tools:$PATH"
+          dotnet format --verify-no-changes --severity info ./MuffinUp/MuffinUp.sln
+        shell: bash
